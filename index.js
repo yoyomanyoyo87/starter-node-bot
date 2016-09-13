@@ -8,15 +8,6 @@ var controller = Botkit.slackbot({
   debug: false
 })
 
-controller.setupWebserver(process.env.port,function(err,webserver) {
-
-  // set up web endpoints for oauth, receiving webhooks, etc.
-  controller
-    .createHomepageEndpoint(controller.webserver)
-    .createOauthEndpoints(controller.webserver,function(err,req,res) { ... })
-    .createWebhookEndpoints(controller.webserver);
-
-});
 
 // Assume single team mode if we have a SLACK_TOKEN
 if (token) {
