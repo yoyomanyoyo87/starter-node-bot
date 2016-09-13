@@ -83,7 +83,7 @@ controller.hears('interactive', 'direct_message', function(bot, message) {
             {
                 title: 'Do you want to interact with my buttons?',
                 callback_id: '123',
-                attachment_type: 'default',
+                attachment_type: 'buttons',
                 actions: [
                     {
                         "name":"yes",
@@ -101,7 +101,7 @@ controller.hears('interactive', 'direct_message', function(bot, message) {
             }
         ]
     });
-});
+})
 
 controller.on('interactive_message_callback', function(bot, message) {
 
