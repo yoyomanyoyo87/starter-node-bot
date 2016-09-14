@@ -74,6 +74,7 @@ controller.hears(['attachment'], ['direct_message', 'direct_mention'], function 
     title_link: 'https://beepboophq.com/',
     text: text,
     color: '#7CD197'
+
   }]
 
   bot.reply(message, {
@@ -89,29 +90,31 @@ controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, mess
 
 controller.hears('interactive', 'direct_message', function(bot, message) {
 
-    bot.reply(message, {
-        attachments:[
-            {
-                title: 'Do you want to interact with my buttons?',
-                callback_id: '123',
-                attachment_type: 'buttons',
-                actions: [
-                    {
-                        "name":"yes",
-                        "text": "Yes",
-                        "value": "yes",
-                        "type": "button",
-                    },
-                    {
-                        "name":"no",
-                        "text": "No",
-                        "value": "no",
-                        "type": "button",
-                    }
-                ]
-            }
-        ]
-    });
+    // bot.reply(message, {
+    //     attachments:[
+    //         {
+    //             title: 'Do you want to interact with my buttons?',
+    //             callback_id: '123',
+    //             attachment_type: 'buttons',
+    //             actions: [
+    //                 {
+    //                     "name":"yes",
+    //                     "text": "Yes",
+    //                     "value": "yes",
+    //                     "type": "button",
+    //                 },
+    //                 {
+    //                     "name":"no",
+    //                     "text": "No",
+    //                     "value": "no",
+    //                     "type": "button",
+    //                 }
+    //             ]
+    //         }
+    //     ]
+    // });
+
+    bot.reply(message, "This is a test");
 })
 
 // controller.on('interactive_message_callback', function(bot, message) {
