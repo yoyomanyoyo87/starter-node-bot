@@ -1,5 +1,5 @@
 var Botkit = require('botkit')
-var logger = require('morgan')
+//var logger = require('morgan')
 
 var PORT = process.env.PORT || 8080
 
