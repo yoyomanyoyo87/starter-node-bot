@@ -1,5 +1,5 @@
 var Botkit = require('botkit')
-var Kinvey = require('kinvey-node-sdk');
+var Kinvey = require('../kinvey/kinvey.js');
 
 // Kinvey.init({
 //     appKey    : 'kid_Zk0NE5LXpg',
