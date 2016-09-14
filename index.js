@@ -1,6 +1,11 @@
 var Botkit = require('botkit')
+var logger = require('moregan')
 
-var token = process.env.SLACK_TOKEN
+var PORT = process.env.PORT || 8080
+
+var TOKEN = process.env.SLACK_TOKEN
+
+var v
 
 var controller = Botkit.slackbot({
   // reconnect to Slack RTM when connection goes bad
@@ -10,10 +15,10 @@ var controller = Botkit.slackbot({
 
 
 // Assume single team mode if we have a SLACK_TOKEN
-if (token) {
+if (TOKEN) {
   console.log('Starting in single-team mode')
   controller.spawn({
-    token: token
+    TOKEN: TOKEN
   }).startRTM(function (err, bot, payload) {
     if (err) {
       throw new Error(err)
@@ -103,40 +108,40 @@ controller.hears('interactive', 'direct_message', function(bot, message) {
     });
 })
 
-controller.on('interactive_message_callback', function(bot, message) {
-
-    // check message.actions and message.callback_id to see what action to take...
-
-    bot.replyInteractive(message, {
-        text: '...',
-        attachments: [
-            {
-                title: 'My buttons',
-                callback_id: '123',
-                attachment_type: 'default',
-                actions: [
-                    {
-                        "name":"yes",
-                        "text": "Yes!",
-                        "value": "yes",
-                        "type": "button",
-                    },
-                    {
-                       "text": "No!",
-                        "name": "no",
-                        "value": "delete",
-                        "style": "danger",
-                        "type": "button",
-                        "confirm": {
-                          "title": "Are you sure?",
-                          "text": "This will do something!",
-                          "ok_text": "Yes",
-                          "dismiss_text": "No"
-                        }
-                    }
-                ]
-            }
-        ]
-    });
-
-});
+// controller.on('interactive_message_callback', function(bot, message) {
+//
+//     // check message.actions and message.callback_id to see what action to take...
+//
+//     bot.replyInteractive(message, {
+//         text: '...',
+//         attachments: [
+//             {
+//                 title: 'My buttons',
+//                 callback_id: '123',
+//                 attachment_type: 'default',
+//                 actions: [
+//                     {
+//                         "name":"yes",
+//                         "text": "Yes!",
+//                         "value": "yes",
+//                         "type": "button",
+//                     },
+//                     {
+//                        "text": "No!",
+//                         "name": "no",
+//                         "value": "delete",
+//                         "style": "danger",
+//                         "type": "button",
+//                         "confirm": {
+//                           "title": "Are you sure?",
+//                           "text": "This will do something!",
+//                           "ok_text": "Yes",
+//                           "dismiss_text": "No"
+//                         }
+//                     }
+//                 ]
+//             }
+//         ]
+//     });
+//
+// });
