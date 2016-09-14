@@ -1,10 +1,10 @@
 var Botkit = require('botkit')
-var Kinvey = require('kinvey');
+var Kinvey = require('kinvey-node-sdk');
 
-Kinvey.init({
-    appKey    : 'kid_Zk0NE5LXpg',
-    appSecret : '778e09ff70154190b3da64a13a855e7f'
-});
+// Kinvey.init({
+//     appKey    : 'kid_Zk0NE5LXpg',
+//     appSecret : '778e09ff70154190b3da64a13a855e7f'
+// });
 
 var PORT = process.env.PORT || 8080
 
@@ -106,32 +106,32 @@ if(message.actions.name == "si")
       text: 'Gracias por confirmar:thumbsup:'
   });
 
-  var query = new Kinvey.Query();
-  query.equalTo('Date', message.callback_id.split('-')[1]);
-  var promise = dataStore.save({
-  _id: query[0]._id,
-  confirmed:  (query[0].confirmed != null)? query[0].confirmed + "," + message.callback_id[0] : message.callback_id[0]
-}).then(function onSuccess(entity) {
-
-}).catch(function onError(error) {
-
-});
+//   var query = new Kinvey.Query();
+//   query.equalTo('Date', message.callback_id.split('-')[1]);
+//   var promise = dataStore.save({
+//   _id: query[0]._id,
+//   confirmed:  (query[0].confirmed != null)? query[0].confirmed + "," + message.callback_id[0] : message.callback_id[0]
+// }).then(function onSuccess(entity) {
+//
+// }).catch(function onError(error) {
+//
+// });
 }
 else{
   bot.replyInteractive(message, {
       text: 'Gracias por notificarnos:thumbsup: Se buscara un <reemplazo>'
   });
 
-  var query = new Kinvey.Query();
-  query.equalTo('Date', message.callback_id.split('-')[1]);
-  var promise = dataStore.save({
-  _id: query[0]._id,
-  confirmedAbscense:  (query[0].confirmedAbscense != null)? query[0].confirmedAbscense + "," + message.callback_id[0] : message.callback_id[0]
-}).then(function onSuccess(entity) {
-
-}).catch(function onError(error) {
-
-});
+//   var query = new Kinvey.Query();
+//   query.equalTo('Date', message.callback_id.split('-')[1]);
+//   var promise = dataStore.save({
+//   _id: query[0]._id,
+//   confirmedAbscense:  (query[0].confirmedAbscense != null)? query[0].confirmedAbscense + "," + message.callback_id[0] : message.callback_id[0]
+// }).then(function onSuccess(entity) {
+//
+// }).catch(function onError(error) {
+//
+// });
 }
 
 
