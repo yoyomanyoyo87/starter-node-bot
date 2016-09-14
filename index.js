@@ -84,10 +84,6 @@ controller.hears(['attachment'], ['direct_message', 'direct_mention'], function 
   })
 })
 
-controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
-  bot.reply(message, 'Sorryyyy <@' + message.user + '>, I don\'t understand. \n')
-})
-
 controller.hears('interactive', 'direct_message', function(bot, message) {
 
     // bot.reply(message, {
@@ -116,6 +112,12 @@ controller.hears('interactive', 'direct_message', function(bot, message) {
 
     bot.reply(message, "This is a test");
 })
+
+
+controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
+  bot.reply(message, 'Sorryyyy <@' + message.user + '>, I don\'t understand. \n')
+})
+
 
 // controller.on('interactive_message_callback', function(bot, message) {
 //
