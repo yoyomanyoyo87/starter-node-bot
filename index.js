@@ -5,32 +5,38 @@ var PORT = process.env.PORT || 8080
 
 var TOKEN = process.env.SLACK_TOKEN
 
-var v
+var VERIFY_TOKEN = process.env.SLACK_VERIFY_TOKEN
 
 var controller = Botkit.slackbot({
   // reconnect to Slack RTM when connection goes bad
   retry: Infinity,
   debug: false
 })
+var bot = controller.spawn({token: TOKEN}).startRTM()
 
+bot.api.team.info({}, function(err, res){
 
-// Assume single team mode if we have a SLACK_TOKEN
-if (TOKEN) {
-  console.log('Starting in single-team mode')
-  controller.spawn({
-    TOKEN: TOKEN
-  }).startRTM(function (err, bot, payload) {
-    if (err) {
-      throw new Error(err)
+  if(err){
+    return console.error(err)
+  }
+  controller.storage.teams.save({id: res.team.id}, (err) => {
+    if(err){
+      console.error(err)
     }
-
-    console.log('Connected to Slack RTM')
   })
-// Otherwise assume multi-team mode - setup beep boop resourcer connection
-} else {
-  console.log('Starting in Beep Boop multi-team mode')
-  require('beepboop-botkit').start(controller, { debug: true })
-}
+
+})
+
+controller.setupWebserver(PORT, function (err, webserver) {
+  if (err) {
+    console.error(err)
+    process.exit(1)
+  }
+
+  webserver.use(logger('tiny'))
+  // Setup our slash command webhook endpoints
+  controller.createWebhookEndpoints(webserver)
+})
 
 controller.on('bot_channel_join', function (bot, message) {
   bot.reply(message, "I'm here!")
@@ -40,7 +46,7 @@ controller.hears(['hello', 'hi'], ['direct_mention'], function (bot, message) {
   bot.reply(message, 'Hello.')
 })
 
-controller.hears(['hello', 'hi'], ['direct_message'], function (bot, message) {
+controller.hears(['helloo', 'hie'], ['direct_message'], function (bot, message) {
   bot.reply(message, 'Hello.')
   bot.reply(message, 'It\'s nice to talk to you directly.')
 })
@@ -78,7 +84,7 @@ controller.hears(['attachment'], ['direct_message', 'direct_mention'], function 
 })
 
 controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
-  bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t understand. \n')
+  bot.reply(message, 'Sorryyyy <@' + message.user + '>, I don\'t understand. \n')
 })
 
 controller.hears('interactive', 'direct_message', function(bot, message) {
