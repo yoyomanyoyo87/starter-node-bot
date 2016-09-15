@@ -116,7 +116,7 @@ controller.on('interactive_message_callback', function(bot, message) {
     var message_callback = message.callback_id.split('-');
 
 
-if(message.actions.name == "si")
+if(message.actions == "si")
 {
   bot.replyInteractive(message, {
       text: 'Gracias por confirmar:thumbsup:'
