@@ -116,7 +116,7 @@ controller.on('interactive_message_callback', function(bot, message) {
     var message_callback = message.callback_id.split('-');
 
 
-if(message.actions.value == "si")
+if(message.actions[0].name == "si")
 {
   bot.replyInteractive(message, {
       text: 'Gracias por confirmar:thumbsup:'
@@ -127,7 +127,7 @@ if(message.actions.value == "si")
 }
 else{
   bot.replyInteractive(message, {
-      text: 'Gracias por notificarnos :thumbsup: Se buscara un *reemplazo* ' + JSON.stringify(message.actions)
+      text: 'Gracias por notificarnos :thumbsup: Se buscara un *reemplazo*'
   });
 //kinveyRequest("abscent", message_callback[0], message_callback[1]);
 
