@@ -1,6 +1,23 @@
 var Botkit = require('botkit')
 var http = require('http')
 
+var options = {
+  hostname: 'https://www.baas.kinvey.com',
+  path: '/rpc/kid_Zk0NE5LXpg/custom/confirmation',
+  method: 'POST',
+  headers: {
+      'Content-Type': 'application/json',
+      'Authorization' : 'Basic a2lkX1prME5FNUxYcGc6YjZmMjU3NjU0YmIwNDY4YzllZTI1MjgyNTNhMmI3NWI='
+  }
+};
+
+var kinveyRequest = function(mode, id, date)
+{
+  var req = http.request(options.path + '?mode='+mode, null);
+
+  req.write('{' + mode + ': ' + id + ', date: ' + date + '}');
+  req.end();
+};
 
 var PORT = process.env.PORT || 8080
 
@@ -96,19 +113,22 @@ controller.on('interactive_message_callback', function(bot, message) {
 
     // check message.actions and message.callback_id to see what action to take...
 
+    var message_callback = message.callback_id.split('-');
+
 if(message.actions.name == "si")
 {
   bot.replyInteractive(message, {
       text: 'Gracias por confirmar:thumbsup:'
   });
 
+  kinveyRequest("present", message_callback[0], message_callback[1]);
 
 }
 else{
   bot.replyInteractive(message, {
-      text: 'Gracias por notificarnos:thumbsup: Se buscara un <reemplazo>'
+      text: 'Gracias por notificarnos :thumbsup: Se buscara un *reemplazo*' + message.actions.name
   });
-
+kinveyRequest("abscent", message_callback[0], message_callback[1]);
 
 }
 
