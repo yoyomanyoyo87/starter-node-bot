@@ -127,7 +127,7 @@ if(message.actions.value == "si")
 }
 else{
   bot.replyInteractive(message, {
-      text: 'Gracias por notificarnos :thumbsup: Se buscara un *reemplazo* ' + message.actions.value
+      text: 'Gracias por notificarnos :thumbsup: Se buscara un *reemplazo* ' + message.actions.toString()
   });
 //kinveyRequest("abscent", message_callback[0], message_callback[1]);
 
