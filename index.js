@@ -1,5 +1,5 @@
 var Botkit = require('botkit')
-var request = require('http')
+var http = require('http')
 
 
 var PORT = process.env.PORT || 8080
