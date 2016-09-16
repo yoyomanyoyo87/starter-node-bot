@@ -15,7 +15,9 @@ var kinveyRequest = function(mode, id, date)
   };
 
 
-  var req = http.request(options, null);
+  // var req = http.request(options, null);
+
+  req.post('https://baas.kinvey.com/rpc/kid_Zk0NE5LXpg/custom/confirmation', null);
 
   req.write('{' + mode + ': ' + id + ', date: ' + date + '}');
   req.end();
