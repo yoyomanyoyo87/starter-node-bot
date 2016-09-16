@@ -5,7 +5,7 @@ var http = require('http')
 var kinveyRequest = function(mode, id, date)
 {
   var options = {
-    host: 'www.baas.kinvey.com',
+    hostname: 'https://www.baas.kinvey.com',
     path: '/rpc/kid_Zk0NE5LXpg/custom/confirmation?mode=' + mode,
     method: 'POST',
     headers: {
