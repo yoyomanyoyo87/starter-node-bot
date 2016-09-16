@@ -1,19 +1,21 @@
 var Botkit = require('botkit')
 var http = require('http')
 
-var options = {
-  hostname: 'https://www.baas.kinvey.com',
-  path: '/rpc/kid_Zk0NE5LXpg/custom/confirmation',
-  method: 'POST',
-  headers: {
-      'Content-Type': 'application/json',
-      'Authorization' : 'Basic a2lkX1prME5FNUxYcGc6YjZmMjU3NjU0YmIwNDY4YzllZTI1MjgyNTNhMmI3NWI='
-  }
-};
 
 var kinveyRequest = function(mode, id, date)
 {
-  var req = http.request(options.path + '?mode='+mode, null);
+  var options = {
+    hostname: 'https://www.baas.kinvey.com',
+    path: '/rpc/kid_Zk0NE5LXpg/custom/confirmation?mode=' + mode,
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization' : 'Basic a2lkX1prME5FNUxYcGc6YjZmMjU3NjU0YmIwNDY4YzllZTI1MjgyNTNhMmI3NWI='
+    }
+  };
+
+
+  var req = http.request(options, null);
 
   req.write('{' + mode + ': ' + id + ', date: ' + date + '}');
   req.end();
