@@ -1,6 +1,6 @@
 var Botkit = require('botkit')
 var http = require('http')
-
+var rest = require('restler')
 
 var kinveyRequest = function(mode, id, date)
 {
