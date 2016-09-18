@@ -16,9 +16,7 @@ var kinveyRequest = function(mode, id, date)
     }
   };
 
-  var postData = querystring.stringify({
-  'msg' : 'Hello World!'
-});
+
 
 
 var req = http.request(options, (res) => {
@@ -38,7 +36,7 @@ req.on('error', (e) => {
 });
 
 // write data to request body
-req.write(postData);
+req.write("{'test' : 1}");
 req.end();
 };
 
