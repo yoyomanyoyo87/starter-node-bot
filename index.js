@@ -5,7 +5,7 @@ var querystring = require('querystring')
 var kinveyRequest = function(mode, id, date)
 {
   var options = {
-    hostname: 'https://www.baas.kinvey.com/rpc/kid_Zk0NE5LXpg/custom/confirmation',
+    hostname: 'https://baas.kinvey.com/rpc/kid_Zk0NE5LXpg/custom/confirmation',
     port: 80,
     method: 'POST',
     headers: {
