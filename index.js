@@ -5,12 +5,11 @@ var querystring = require('querystring')
 var kinveyRequest = function(mode, id, date)
 {
   var options = {
-    hostname: 'https://www.baas.kinvey.com',
+    hostname: 'https://www.baas.kinvey.com/rpc/kid_Zk0NE5LXpg/custom/confirmation',
     port: 80,
-    path: '/rpc/kid_Zk0NE5LXpg/custom/confirmation',
     method: 'POST',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/json',
       'Authorization': 'Basic a2lkX1prME5FNUxYcGc6YjZmMjU3NjU0YmIwNDY4YzllZTI1MjgyNTNhMmI3NWI='
     }
   };
