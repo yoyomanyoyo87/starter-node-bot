@@ -47,7 +47,7 @@ req.on('error', (e) => {
 });
 
 // write data to request body
-req.write("{'test' : 1}");
+req.write(`{'id' : ${id}, 'date' : ${date}}`);
 req.end();
 };
 
