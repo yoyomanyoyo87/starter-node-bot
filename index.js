@@ -5,13 +5,13 @@ var querystring = require('querystring')
 var kinveyRequest = function(mode, id, date)
 {
   var options = {
-    hostname: 'www.google.com',
+    hostname: 'www.baas.kinvey.com',
     port: 80,
-    path: '/',
+    path: '/rpc/kid_Zk0NE5LXpg/custom/confirmation',
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Content-Length': Buffer.byteLength(postData)
+      'Authorization': 'Basic a2lkX1prME5FNUxYcGc6YjZmMjU3NjU0YmIwNDY4YzllZTI1MjgyNTNhMmI3NWI='
     }
   };
 
