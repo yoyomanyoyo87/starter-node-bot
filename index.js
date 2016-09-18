@@ -17,8 +17,8 @@ var kinveyRequest = function(mode, id, date)
   // };
 
   var options = {
-    hostname: 'requestb.in/ywaq7oyw',
-    path: '?mode=' + mode,
+    hostname: 'requestb.in',
+    path: '/ywaq7oyw',
     port: 80,
     method: 'POST',
     headers: {
