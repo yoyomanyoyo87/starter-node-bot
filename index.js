@@ -1,27 +1,44 @@
 var Botkit = require('botkit')
 var http = require('http');
-http.post = require('http-post');
+var querystring = require('querystring')
 
 var kinveyRequest = function(mode, id, date)
 {
   var options = {
-    hostname: 'https://www.baas.kinvey.com',
-    path: '/rpc/kid_Zk0NE5LXpg/custom/confirmation?mode=' + mode,
+    hostname: 'www.google.com',
+    port: 80,
+    path: '/upload',
     method: 'POST',
     headers: {
-        'Content-Type': 'application/json',
-        'Authorization' : 'Basic a2lkX1prME5FNUxYcGc6YjZmMjU3NjU0YmIwNDY4YzllZTI1MjgyNTNhMmI3NWI='
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': Buffer.byteLength(postData)
     }
   };
 
+  var postData = querystring.stringify({
+  'msg' : 'Hello World!'
+});
 
-  // var req = http.request(options, null);
 
+var req = http.request(options, (res) => {
+  console.log(`STATUS: ${res.statusCode}`);
+  console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
+  res.setEncoding('utf8');
+  res.on('data', (chunk) => {
+    console.log(`BODY: ${chunk}`);
+  });
+  res.on('end', () => {
+    console.log('No more data in response.');
+  });
+});
 
-  var req = http.post('https://baas.kinvey.com/rpc/kid_Zk0NE5LXpg/custom/confirmation', null);
+req.on('error', (e) => {
+  console.log(`problem with request: ${e.message}`);
+});
 
-  req.write('{' + mode + ': ' + id + ', date: ' + date + '}');
-  req.end();
+// write data to request body
+req.write(postData);
+req.end();
 };
 
 var PORT = process.env.PORT || 8080
