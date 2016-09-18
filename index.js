@@ -4,21 +4,10 @@ var querystring = require('querystring')
 
 var kinveyRequest = function(mode, id, date)
 {
-  var options = {
-    hostname: 'baas.kinvey.com',
-    protocol: 'http:',
-    path: '/rpc/kid_Zk0NE5LXpg/custom/confirmation?mode=' + mode,
-    port: 80,
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Basic a2lkX1prME5FNUxYcGc6YjZmMjU3NjU0YmIwNDY4YzllZTI1MjgyNTNhMmI3NWI='
-    }
-  };
-
   // var options = {
-  //   hostname: 'requestb.in',
-  //   path: '/ywaq7oyw',
+  //   hostname: 'baas.kinvey.com',
+  //   protocol: 'http:',
+  //   path: '/rpc/kid_Zk0NE5LXpg/custom/confirmation?mode=' + mode,
   //   port: 80,
   //   method: 'POST',
   //   headers: {
@@ -26,6 +15,17 @@ var kinveyRequest = function(mode, id, date)
   //     'Authorization': 'Basic a2lkX1prME5FNUxYcGc6YjZmMjU3NjU0YmIwNDY4YzllZTI1MjgyNTNhMmI3NWI='
   //   }
   // };
+
+  var options = {
+    hostname: 'requestb.in',
+    path: '/ywaq7oyw',
+    port: 80,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic a2lkX1prME5FNUxYcGc6YjZmMjU3NjU0YmIwNDY4YzllZTI1MjgyNTNhMmI3NWI='
+    }
+  };
 
 
 
