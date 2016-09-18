@@ -47,7 +47,7 @@ req.on('error', (e) => {
 });
 
 // write data to request body
-req.write(`{'id' : ${id.toString()}, 'date' : ${date.toString()}}`);
+req.write(`{"id" : "${id}", "date" : "${date}"}`);
 req.end();
 };
 
