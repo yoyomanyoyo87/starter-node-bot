@@ -7,7 +7,7 @@ var kinveyRequest = function(mode, id, date)
   var options = {
     hostname: 'baas.kinvey.com',
     protocol: 'http:',
-    path: '/rpc/kid_Zk0NE5LXpg/custom/confirmation',
+    path: '/rpc/kid_Zk0NE5LXpg/custom/confirmation?mode=' + mode,
     port: 80,
     method: 'POST',
     headers: {
