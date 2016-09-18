@@ -7,7 +7,7 @@ var kinveyRequest = function(mode, id, date)
   var options = {
     hostname: 'www.google.com',
     port: 80,
-    path: '/upload',
+    path: '/',
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
